@@ -4,32 +4,29 @@ FROM rust:alpine
 
 RUN set -x && \
     apk --no-cache --update add \
-    bash \
-    ca-certificates \
-    curl 
-    musl-dev \
-    git \
-    make \
-    upx && \
-    
-    
-        apk add --no-cache --update alpine-sdk \
-                                git \
-                                autoconf \
-                                automake \
-                                build-base \
-                                libev-dev \
-                                c-ares-dev \
-                                libtool \
-                                linux-headers \
-                                libsodium-dev \
-                                mbedtls-dev \
-                                pcre-dev && \
-                                echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && \
-                                apk add --no-cache --update \
-                                                            libbloom-dev \
-                                                            libcork-dev \        
-                                                            libbloom-dev && \
+        bash \
+        ca-certificates \
+        curl \
+        musl \
+        musl-dev \
+        git \
+        make \
+        upx \
+        autoconf \
+        automake \
+        build-base \
+        libev-dev \
+        c-ares-dev \
+        libtool \
+        linux-headers \
+        libsodium-dev \
+        mbedtls-dev \
+        pcre-dev && \
+    echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && \
+    apk add --no-cache --update \
+        libbloom-dev \
+        libcork-dev \        
+        libbloom-dev && \
     
     mkdir -p /src && \
     cd /src/ && \
