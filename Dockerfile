@@ -12,6 +12,25 @@ RUN set -x && \
     make \
     upx && \
     
+    
+        apk add --no-cache --update alpine-sdk \
+                                git \
+                                autoconf \
+                                automake \
+                                build-base \
+                                libev-dev \
+                                c-ares-dev \
+                                libtool \
+                                linux-headers \
+                                libsodium-dev \
+                                mbedtls-dev \
+                                pcre-dev && \
+                                echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && \
+                                apk add --no-cache --update \
+                                                            libbloom-dev \
+                                                            libcork-dev \        
+                                                            libbloom-dev && \
+    
     mkdir -p /src && \
     cd /src/ && \
     git clone https://github.com/shadowsocks/shadowsocks-rust.git && \
