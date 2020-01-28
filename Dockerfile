@@ -1,51 +1,23 @@
 ###############################################################################
 # BUILD STAGE
-FROM rust:alpine
+FROM rust:alpine3.11
 
 RUN set -x && \
-    apk --no-cache --update add \
-        bash \
-        ca-certificates \
-        curl \
-        musl \
-        musl-dev \
-        git \
-        make \
-        upx \
-        autoconf \
-        automake \
-        build-base \
-        libev-dev \
-        c-ares-dev \
-        libtool \
-        linux-headers \
-        libsodium-dev \
-        mbedtls-dev \
-        pcre-dev && \
-    echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && \
-    apk add --no-cache --update \
-        libbloom-dev \
-        libcork-dev \        
-        libbloom-dev && \
-    
-    mkdir -p /src && \
-    cd /src/ && \
-    git clone https://github.com/shadowsocks/shadowsocks-rust.git && \
-    cd /src/shadowsocks-rust/ && \ 
-    make -j 4 && \
-    upx --ultra-brute -qq /usr/local/bin/ssserver
-
+                cargo install shadowsocks-rust
+EXPOSE 55555
+VOLUME ["/cfg"]   
+ENTRYPOINT ["ssserver"]
 ###############################################################################
 # PACKAGE STAGE
 
-FROM scratch
+#FROM scratch
 
-COPY --from=0 /usr/local/bin/ssserver /ssserver
+#COPY --from=0 /usr/local/bin/ssserver /ssserver
 
-VOLUME ["/cfg"]
+#VOLUME ["/cfg"]
 
-EXPOSE 55555
+#EXPOSE 55555
 
-ENTRYPOINT ["/ssserver"]
+#ENTRYPOINT ["/ssserver"]
 
 #CMD ["-config", "/cfg/shadowsocks_o.yml", "--replay_history", "1000"]
