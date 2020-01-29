@@ -5,14 +5,14 @@ ARG SSRUST_VER=1.8.7
 ##
 RUN set -ex && \
      mkdir -p /tmp/ss && \
-     apk add --no-cache --update wget && \
+     apk add --no-cache --update wget tar && \
      rm -rf /var/cache/apk/* && \
      mkdir -p /etc/ss/cfg && \
      cd /tmp/ss && \
      wget -q --no-check-certificate https://github.com/shadowsocks/shadowsocks-rust/releases/download/v${SSRUST_VER}/shadowsocks-v${SSRUST_VER}-stable.x86_64-unknown-linux-musl.tar.xz && \ 
      tar -xvf shadowsocks-v${SSRUST_VER}-stable.x86_64-unknown-linux-musl.tar.xz  && \
      mv /tmp/ss/ssserver /ssserver && \
-     apt del wget && \
+     apt del wget tar && \
      rm -rf /var/cache/apk/* && \
      rm -rf /tmp/ss
 ##                       
