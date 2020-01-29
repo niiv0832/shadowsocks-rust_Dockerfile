@@ -1,11 +1,11 @@
-FROM alpine:edge
+FROM alpine:edge as builder
 MAINTAINER niiv0832 <dockerhubme-sslibev@yahoo.com
 ##
 ARG SSRUST_VER=1.8.7
 ##
 RUN set -ex && \
      mkdir -p /tmp/ss && \
-     apk add --no-cache --update wget tar bash && \
+     apk add --no-cache --update wget tar && \
      rm -rf /var/cache/apk/* && \
      mkdir -p /etc/ss/cfg && \
      cd /tmp/ss && \
@@ -15,6 +15,12 @@ RUN set -ex && \
      apk del wget tar libacl libunistring libidn2 && \
      rm -rf /var/cache/apk/* && \
      rm -rf /tmp/ss
+#    
+###############################################################################
+# PACKAGE STAGE          
+FROM scratch
+MAINTAINER niiv0832 <dockerhubme-sslibev@yahoo.com
+COPY --from=builder /ssserver /ssserver
 ##                       
 VOLUME ["/etc/ss/cfg/"]
 ##
@@ -22,4 +28,6 @@ EXPOSE 7500
 ##
 USER nobody
 ##
-CMD /ssserver -u -c /etc/ss/cfg/shadowsocks_rust.json
+ENTRYPOINT ["/ssserver"]
+##
+CMD ["-u", "-c", "/etc/ss/cfg/shadowsocks_rust.json"]
