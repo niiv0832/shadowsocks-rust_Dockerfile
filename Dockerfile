@@ -1,3 +1,6 @@
+#ver-2020.01.29.19.16
+###############################################################################
+# BUILD STAGE
 FROM alpine:edge as builder
 MAINTAINER niiv0832 <dockerhubme-sslibev@yahoo.com
 ##
