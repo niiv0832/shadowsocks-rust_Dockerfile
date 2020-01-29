@@ -5,7 +5,7 @@ ARG SSRUST_VER=1.8.7
 ##
 RUN set -ex && \
      mkdir -p /tmp/ss && \
-     apk add --no-cache --update wget tar && \
+     apk add --no-cache --update wget tar bash && \
      rm -rf /var/cache/apk/* && \
      mkdir -p /etc/ss/cfg && \
      cd /tmp/ss && \
@@ -22,6 +22,4 @@ EXPOSE 7500
 ##
 USER nobody
 ##
-ENTRYPOINT ["/ssserver"]
-##
-CMD ["--config", "/cfg/shadowsocks_rust.json", "-u"]
+CMD /ssserver -u -c /etc/ss/cfg/shadowsocks_rust.json
