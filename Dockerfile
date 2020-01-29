@@ -1,6 +1,6 @@
 ###############################################################################
 # BUILD STAGE
-FROM rust:alpine3.11
+FROM rust:buster
 
 RUN set -x && \
                 cargo install shadowsocks-rust
