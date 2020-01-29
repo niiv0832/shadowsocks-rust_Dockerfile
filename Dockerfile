@@ -24,4 +24,4 @@ USER nobody
 ##
 ENTRYPOINT ["/ssserver"]
 ##
-CMD ["-config", "/cfg/shadowsocks_r.json", "-u"]
+CMD ["--config", "/cfg/shadowsocks_rust.json", "-u"]
