@@ -3,6 +3,7 @@
 FROM rust:buster
 
 RUN set -x && \
+                apt install -y bash && \
                 cargo install shadowsocks-rust
 EXPOSE 55555
 VOLUME ["/cfg"]   
