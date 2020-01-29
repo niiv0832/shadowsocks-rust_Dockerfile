@@ -1,6 +1,6 @@
 # Docker container for fast proxy setup based on Shadowsocks-rust proxy
 
-Shadowsocks-rust Server (`udp`) running from config file&
+Shadowsocks-rust Server (`udp`) running from config file
 
 ```shell
 docker run -d --name=ssrustserv --restart=always -v $YOUR_PATH_TO_JSON_CONFIG_DIR$:/etc/ssr/cfg -p $YOUR_PORT$:7500 -t niiv0832/shadowsocks_rust
