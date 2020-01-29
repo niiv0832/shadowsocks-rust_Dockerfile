@@ -26,8 +26,6 @@ VOLUME ["/etc/ss/cfg/"]
 ##
 EXPOSE 7500
 ##
-USER nobody
-##
 ENTRYPOINT ["/ssserver"]
 ##
 CMD ["-u", "-c", "/etc/ss/cfg/shadowsocks_rust.json"]
