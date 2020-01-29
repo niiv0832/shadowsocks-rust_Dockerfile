@@ -12,7 +12,7 @@ RUN set -ex && \
      wget -q --no-check-certificate https://github.com/shadowsocks/shadowsocks-rust/releases/download/v${SSRUST_VER}/shadowsocks-v${SSRUST_VER}-stable.x86_64-unknown-linux-musl.tar.xz && \ 
      tar -xvf shadowsocks-v${SSRUST_VER}-stable.x86_64-unknown-linux-musl.tar.xz  && \
      mv /tmp/ss/ssserver /ssserver && \
-     apt del wget tar && \
+     apk del wget tar libacl libunistring libidn2 && \
      rm -rf /var/cache/apk/* && \
      rm -rf /tmp/ss
 ##                       
