@@ -1,10 +1,10 @@
-#ver-2020.02.29.20.16
+#ver-2021.01.02.16.30
 ###############################################################################
 # BUILD STAGE
 FROM alpine:edge as builder
 MAINTAINER niiv0832 <dockerhubme-sslibev@yahoo.com
 ##
-ARG SSRUST_VER=1.8.9
+ARG SSRUST_VER=1.8.23
 ##
 RUN set -ex && \
      mkdir -p /tmp/ss && \
