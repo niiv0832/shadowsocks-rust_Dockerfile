@@ -8,7 +8,7 @@ ARG SSRUST_VER=1.8.23
 ##
 RUN set -ex && \
     mkdir -p /tmp/ss && \
-    apk add --no-cache --update wget tar && \
+    apk add --no-cache --update wget tar xz && \
     rm -rf /var/cache/apk/* && \
     mkdir -p /etc/ss/cfg && \
     cd /tmp/ss && \
