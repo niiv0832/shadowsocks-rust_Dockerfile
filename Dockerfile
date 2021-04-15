@@ -32,4 +32,4 @@ EXPOSE 7500
 ENTRYPOINT ["/ssserver"]
 ##
 ##CMD ["-u", "--config", "/etc/ss/cfg/shadowsocks_rust.json"]
-CMD ["-u --config /etc/ss/cfg/shadowsocks_rust.json"]
+CMD ["-c /etc/ss/cfg/shadowsocks_rust.json -u"]
