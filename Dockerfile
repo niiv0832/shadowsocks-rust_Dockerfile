@@ -4,7 +4,7 @@
 FROM alpine:edge as builder
 MAINTAINER niiv0832 <dockerhubme-sslibev@yahoo.com
 ##
-ARG SSRUST_VER=1.10.5
+ARG SSRUST_VER=1.10.9
 ##
 RUN set -ex && \
     mkdir -p /tmp/ss && \
